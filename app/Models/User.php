@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function eventPublisher()
+    {
+        return $this->hasOne(EventPublisher::class);
+    }
+
+    public function supplier()
+    {
+        return $this->hasOne(Supplier::class);
+    }
 }
