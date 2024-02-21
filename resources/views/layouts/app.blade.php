@@ -54,10 +54,10 @@
                 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                     <div class="app-brand demo">
                         <a href="index.html" class="app-brand-link">
-                            <span class="app-brand-logo demo">
+                            {{-- <span class="app-brand-logo demo">
                                 <img class="w-px-75 h-auto rounded-circle" src="{{ asset('assets/img/logo.png') }}">
-                            </span>
-                            <span class="app-brand-text demo menu-text fw-bolder ms-2">Event & Supply Cordination</span>
+                            </span> --}}
+                            <span class="app-brand-text demo fw-bolder ms-2 text-capitalize">Event & Supply</span>
                         </a>
 
                         <a href="javascript:void(0);"
@@ -80,21 +80,14 @@
                         <li class="menu-item @active('courses.create') @active('courses.edit') @active('courses.index')">
                             <a href="{{ route('courses.index') }}" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-book"></i>
-                                <div data-i18n="Analytics">Courses</div>
+                                <div data-i18n="Analytics">Events</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
                             <a href="index.html" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                                <div data-i18n="Analytics">Students</div>
-                            </a>
-                        </li>
-
-                        <li class="menu-item">
-                            <a href="index.html" class="menu-link">
-                                <i class="menu-icon tf-icons bx bx-user"></i>
-                                <div data-i18n="Analytics">Lecturers</div>
+                                <div data-i18n="Analytics">Reviews</div>
                             </a>
                         </li>
 

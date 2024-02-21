@@ -51,14 +51,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <span class="fw-semibold d-block mb-1">Profit</span>
+                                    <span class="fw-semibold d-block mb-1">Events</span>
                                     <h3 class="card-title mb-2">$12,628</h3>
                                     <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i>
                                         +72.80%</small>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        {{-- <div class="col-lg-6 col-md-12 col-6 mb-4">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="card-title d-flex align-items-start justify-content-between">
@@ -84,11 +84,11 @@
                                         +28.42%</small>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- Total Revenue -->
-                <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                {{-- <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                     <div class="card">
                         <div class="row row-bordered g-0">
                             <div class="col-md-8">
@@ -140,9 +140,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!--/ Total Revenue -->
-                <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
+                {{-- <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
                     <div class="row">
                         <div class="col-6 mb-4">
                             <div class="card">
@@ -153,8 +153,8 @@
                                                 class="rounded" />
                                         </div>
                                         <div class="dropdown">
-                                            <button class="btn p-0" type="button" id="cardOpt4"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn p-0" type="button" id="cardOpt4" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
@@ -180,8 +180,8 @@
                                                 class="rounded" />
                                         </div>
                                         <div class="dropdown">
-                                            <button class="btn p-0" type="button" id="cardOpt1"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <button class="btn p-0" type="button" id="cardOpt1" data-bs-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="cardOpt1">
@@ -199,7 +199,7 @@
                             </div>
                         </div>
                         <!-- </div>
-                                                                    <div class="row"> -->
+                                                                                    <div class="row"> -->
                         <div class="col-12 mb-4">
                             <div class="card">
                                 <div class="card-body">
@@ -223,9 +223,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
-            <div class="row">
+            <div class="row d-none">
                 <!-- Order Statistics -->
                 <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
                     <div class="card h-100">
@@ -501,7 +501,7 @@
         <!-- / Content -->
 
         <!-- Footer -->
-        <footer class="content-footer footer bg-footer-theme">
+        <footer class="content-footer footer bg-footer-theme d-none">
             <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
                     ©
