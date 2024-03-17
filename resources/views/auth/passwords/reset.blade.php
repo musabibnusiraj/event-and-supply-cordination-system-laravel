@@ -16,7 +16,7 @@
                             <a href="index.html" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img class="w-px-200 h-auto rounded-circle"
-                                        src="{{ asset('assets/img/tutor-boy.png') }}">
+                                        src="{{ asset('assets/img/event-cordy.png') }}">
                                 </span>
                                 <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
                             </a>

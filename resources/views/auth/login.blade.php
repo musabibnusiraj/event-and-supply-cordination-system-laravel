@@ -16,12 +16,12 @@
                             <a href="index.html" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img class="w-px-200 h-auto rounded-circle"
-                                        src="{{ asset('assets/img/tutor-boy.png') }}">
+                                        src="{{ asset('assets/img/event-cordy.png') }}">
                                 </span>
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Event & Supply Cordination! 👋</h4>
+                        <h4 class="mb-2">Welcome to Event Cordy! 👋</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
                         <form id="formAuthentication" class="mb-3" method="POST" action="{{ route('login') }}">
