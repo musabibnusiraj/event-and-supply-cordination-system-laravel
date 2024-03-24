@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Event & Supply Cordination') }}</title>
+    <title>{{ config('app.name', 'Event Cordy!') }}</title>
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('../assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
     <link rel="stylesheet" href="{{ asset('../assets/vendor/css/theme-default.css') }}"
         class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('../assets/vendor/css/theme-cody.css') }}" class="theme-css" />
     <link rel="stylesheet" href="{{ asset('../assets/css/demo.css') }}" />
 
     <!-- Vendors CSS -->
@@ -46,18 +47,24 @@
 </head>
 
 <body>
-    <div id="app">
+    @php
+        $theme = '';
+        $role = Auth::user()->roles->first();
+        if (isset($role->name) && $role->name == 'Publisher') {
+            $theme = 'cody';
+        }
+    @endphp
+
+    <div id="app" class="{{ $theme }}">
         <!-- Layout wrapper -->
         <div class="layout-wrapper layout-content-navbar">
             <div class="layout-container">
                 <!-- Menu -->
                 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                     <div class="app-brand demo">
-                        <a href="index.html" class="app-brand-link">
-                            {{-- <span class="app-brand-logo demo">
-                                <img class="w-px-75 h-auto rounded-circle" src="{{ asset('assets/img/logo.png') }}">
-                            </span> --}}
-                            <span class="app-brand-text demo fw-bolder ms-2 text-capitalize">Event & Supply</span>
+
+                        <a href="#" class="app-brand-link">
+                            <span class="app-brand-text demo fw-bolder ms-2 text-capitalize">Event Cordy</span>
                         </a>
 
                         <a href="javascript:void(0);"
@@ -77,15 +84,15 @@
                             </a>
                         </li>
 
-                        <li class="menu-item @active('courses.create') @active('courses.edit') @active('courses.index')">
-                            <a href="{{ route('courses.index') }}" class="menu-link">
+                        <li class="menu-item @active('events.create') @active('events.edit') @active('events.index')">
+                            <a href="{{ route('events.index') }}" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-book"></i>
                                 <div data-i18n="Analytics">Events</div>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="index.html" class="menu-link">
+                            <a href="#" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-user-circle"></i>
                                 <div data-i18n="Analytics">Reviews</div>
                             </a>
@@ -190,22 +197,6 @@
                                             <a class="dropdown-item" href="#">
                                                 <i class="bx bx-user me-2"></i>
                                                 <span class="align-middle">My Profile</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="bx bx-cog me-2"></i>
-                                                <span class="align-middle">Settings</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                <span class="d-flex align-items-center align-middle">
-                                                    <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                                    <span class="flex-grow-1 align-middle">Billing</span>
-                                                    <span
-                                                        class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                                                </span>
                                             </a>
                                         </li>
                                         <li>

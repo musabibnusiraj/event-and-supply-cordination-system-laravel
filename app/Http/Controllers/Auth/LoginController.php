@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class LoginController extends Controller
 {
@@ -36,5 +38,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+
+        $role = Role::findByName('Publisher');
+        if ($request->role == 'supplier') {
+            $role = Role::findByName('Supplier');
+        }
+
+        $hasRole = $user->hasRole($role);
+        if (!$hasRole) {
+            $user->switchRole($role);
+        }
     }
 }

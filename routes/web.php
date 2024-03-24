@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Auth;
@@ -28,5 +28,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::resource('courses', CourseController::class);
+    Route::group(['middleware' => ['role:Publisher']], function () {
+        Route::resource('events', EventController::class);
+    });
 });

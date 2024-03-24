@@ -11,12 +11,14 @@
                             <div class="col-sm-7">
                                 <div class="card-body">
                                     <h5 class="card-title text-primary">Welcome {{ Auth::user()->name ?? '' }}! 🎉</h5>
+                                    <h6>{{ Auth::user()->roles->first()->name }}</h6>
                                     <p class="mb-4">
-                                        You have done <span class="fw-bold">72%</span>
+                                        You have done <span class="fw-bold">72% </span>
                                     </p>
 
-                                    <a href="javascript:;" class="btn btn-sm btn-outline-primary">View
-                                        Badges</a>
+                                    <a href="{{ route('events.index') }}" class="btn btn-sm btn-outline-primary">
+                                        Events
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-sm-5 text-center text-sm-left">
@@ -29,6 +31,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-md-4 order-1">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-6 mb-4">
@@ -87,6 +90,7 @@
                         </div> --}}
                     </div>
                 </div>
+
                 <!-- Total Revenue -->
                 {{-- <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                     <div class="card">
@@ -141,6 +145,7 @@
                         </div>
                     </div>
                 </div> --}}
+
                 <!--/ Total Revenue -->
                 {{-- <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
                     <div class="row">
@@ -225,6 +230,7 @@
                     </div>
                 </div> --}}
             </div>
+
             <div class="row d-none">
                 <!-- Order Statistics -->
                 <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
