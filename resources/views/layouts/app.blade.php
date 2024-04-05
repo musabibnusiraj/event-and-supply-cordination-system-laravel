@@ -84,8 +84,8 @@
                             </a>
                         </li>
 
-                        <li class="menu-item @active('events.create') @active('events.edit') @active('events.index')">
-                            <a href="{{ route('events.index') }}" class="menu-link">
+                        <li class="menu-item @active('supplier-events.create') @active('supplier-events.edit') @active('supplier-events.index')">
+                            <a href="{{ route('publisher.events.index') }}" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-book"></i>
                                 <div data-i18n="Analytics">Events</div>
                             </a>

@@ -16,7 +16,7 @@
                                         You have done <span class="fw-bold">72% </span>
                                     </p>
 
-                                    <a href="{{ route('events.index') }}" class="btn btn-sm btn-outline-primary">
+                                    <a href="{{ route('supplier-events.index') }}" class="btn btn-sm btn-outline-primary">
                                         Events
                                     </a>
                                 </div>

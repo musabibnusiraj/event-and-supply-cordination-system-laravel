@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +27,15 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::group(['middleware' => ['role:Publisher']], function () {
-        Route::resource('events', EventController::class);
+    Route::prefix('publisher')->group(function () {
+        Route::group(['middleware' => ['role:Publisher']], function () {
+            Route::resource('publisher/events', App\Http\Controllers\Publisher\EventController::class);
+        });
+    });
+
+    Route::prefix('supplier')->group(function () {
+        Route::group(['middleware' => ['role:supplier']], function () {
+            Route::resource('supplier-events', App\Http\Controllers\Supplier\EventController::class);
+        });
     });
 });
