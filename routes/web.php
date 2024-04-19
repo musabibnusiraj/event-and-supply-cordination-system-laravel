@@ -29,13 +29,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('publisher')->group(function () {
         Route::group(['middleware' => ['role:Publisher']], function () {
-            Route::resource('publisher/events', App\Http\Controllers\Publisher\EventController::class);
+            Route::get('events/index', [App\Http\Controllers\Publisher\EventController::class, 'index'])->name('publisher.events.index');
         });
     });
 
     Route::prefix('supplier')->group(function () {
-        Route::group(['middleware' => ['role:supplier']], function () {
-            Route::resource('supplier-events', App\Http\Controllers\Supplier\EventController::class);
+        Route::group(['middleware' => ['role:Supplier']], function () {
+            Route::get('events/index', [App\Http\Controllers\Supplier\EventController::class, 'index'])->name('supplier.events.index');
         });
     });
 });

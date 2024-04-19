@@ -15,7 +15,7 @@ class EventController extends Controller
     {
         $data['events'] = Event::all();
 
-        return view('event_publishers.events.index', $data);
+        return view('supplier.events.index', $data);
     }
 
     /**

@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -69,5 +71,19 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+
+        $role = Role::findByName('Publisher');
+        if ($request->role == 'supplier') {
+            $role = Role::findByName('Supplier');
+        }
+
+        $hasRole = $user->hasRole($role);
+        if (!$hasRole) {
+            $user->switchRole($role);
+        }
     }
 }
