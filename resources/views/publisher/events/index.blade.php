@@ -10,7 +10,15 @@
 
             <!-- Basic Bootstrap Table -->
             <div class="card">
-                <h5 class="card-header">Events</h5>
+                <h5 class="card-header row">
+                    <div class="col-6">
+                        Events
+                    </div>
+                    <div class="col-6 text-end">
+                        <a href="{{ route('publisher.events.create') }}" class="btn btn-primary justify-content-end">Create
+                            Event</a>
+                    </div>
+                </h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>

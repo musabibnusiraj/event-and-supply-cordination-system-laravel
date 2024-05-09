@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('publisher')->group(function () {
         Route::group(['middleware' => ['role:Publisher']], function () {
             Route::get('events/index', [App\Http\Controllers\Publisher\EventController::class, 'index'])->name('publisher.events.index');
+            Route::get('events/create', [App\Http\Controllers\Publisher\EventController::class, 'create'])->name('publisher.events.create');
         });
     });
 
