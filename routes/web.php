@@ -31,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['middleware' => ['role:Publisher']], function () {
             Route::get('events/index', [App\Http\Controllers\Publisher\EventController::class, 'index'])->name('publisher.events.index');
             Route::get('events/create', [App\Http\Controllers\Publisher\EventController::class, 'create'])->name('publisher.events.create');
+            Route::get('events/{id}/edit', [App\Http\Controllers\Publisher\EventController::class, 'edit'])->name('publisher.events.edit');
+            Route::post('events/store', [App\Http\Controllers\Publisher\EventController::class, 'store'])->name('publisher.events.store');
+            Route::post('events/{id}/update', [App\Http\Controllers\Publisher\EventController::class, 'update'])->name('publisher.events.update');
         });
     });
 
