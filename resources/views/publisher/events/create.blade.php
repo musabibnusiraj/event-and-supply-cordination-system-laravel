@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-6">
                         <div class="form-group d-flex justify-content-end">
-                            <a href="{{ url()->previous() }}" class="btn btn-dark active">
+                            <a href="{{ route('publisher.events.index') }}" class="btn btn-dark active">
                                 Back
                             </a>
                         </div>
@@ -26,6 +26,26 @@
 
                 <div class="table-responsive text-nowrap">
                     <div class="container">
+
+                        <!-- Check if there are any validation errors, if so, display them -->
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    <!-- Loop through each validation error and display it -->
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <!-- Check if there is a success message, if so, display it -->
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
                         <form id="publisher-events-store" class="mb-3" action="{{ route('publisher.events.store') }}"
                             method="POST">
                             @csrf

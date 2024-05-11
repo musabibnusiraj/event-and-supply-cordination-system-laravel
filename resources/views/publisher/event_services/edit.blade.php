@@ -46,66 +46,58 @@
                             </div>
                         @endif
 
-                        <form id="formAuthentication" class="mb-3"
-                            action="{{ route('publisher.events.update', $event->id) }}" method="POST">
+                        <form id="publisher-event-service-update" class="mb-3"
+                            action="{{ route('publisher.event.services.update', $event_service->id) }}" method="POST">
                             @csrf
                             @method('PATCH')
 
                             <div class="row">
-                                <div class="col-12">
-                                    <div id="alert-container"></div>
-                                </div>
+                                <input type="hidden" name="event_id" value="{{ $event_service->event->id }}" required>
 
-                                <div class="mb-3 col-4">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" name="name" class="form-control"
-                                        value="{{ $event->name ?? old('name') }}">
-                                </div>
-
-                                <div class="mb-3 col-8">
-                                    <label for="description" class="form-label">Description</label>
-                                    <input name="description" type="text" class="form-control"
-                                        value="{{ $event->description ?? old('description') }}">
+                                <div class="col-12 mb-3">
+                                    <label for="service_id" class="form-label">Status</label>
+                                    <select id="service_id" class="form-control @error('service_id') is-invalid @enderror"
+                                        name="service_id">
+                                        @foreach ($services as $service)
+                                            <option value="{{ $service->id }}">
+                                                <span class="text-capitalize"><b>{{ $service->name }} </b> -
+                                                    {{ $service->description }}</span>
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="mb-3 col-12">
-                                    <label for="address" class="form-label">Address</label>
-                                    <input name="address" type="text" class="form-control"
-                                        value="{{ $event->address ?? old('address') }}">
+                                    <label for="note" class="form-label">Note</label>
+                                    <input type="text" name="note" class="form-control" value="" required>
                                 </div>
 
                                 <div class="mb-3 col-6">
-                                    <label for="city" class="form-label">City</label>
-                                    <input name="city" type="text" class="form-control"
-                                        value="{{ $event->city ?? old('city') }}">
+                                    <label for="budget_range_start" class="form-label">Budget From</label>
+                                    <input name="budget_range_start" type="number" class="form-control" value="0"
+                                        required>
                                 </div>
 
                                 <div class="mb-3 col-6">
-                                    <label for="country" class="form-label">Country</label>
-                                    <input name="country" type="text" class="form-control"
-                                        value="{{ $event->country ?? old('country') }}">
+                                    <label for="budget_range_end" class="form-label">Budget To</label>
+                                    <input name="budget_range_end" type="text" class="form-control" value="1"
+                                        required>
                                 </div>
 
                                 <div class="mb-3 col-6">
-                                    <label for="start_datetime" class="col-form-label">Start
-                                        Datetime</label>
-                                    <input class="form-control" name="start_datetime" type="datetime-local"
-                                        value="{{ $event->start_datetime ?? old('start_datetime') }}" id="start_datetime">
+                                    <label for="quantity" class="form-label">Quantity</label>
+                                    <input name="quantity" type="text" class="form-control" value="1" required>
                                 </div>
 
-                                <div class="mb-3 col-6">
-                                    <label for="end_datetime" class="col-form-label">End
-                                        Datetime</label>
-                                    <input name="end_datetime" class="form-control" type="datetime-local"
-                                        value="{{ $event->end_datetime ?? old('end_datetime') }}" id="end_datetime">
-                                </div>
+                                {{-- <div class="mb-3 col-6">
+                                <label for="document" class="form-label">Document</label>
+                                <input name="document" type="file" class="form-control" value="">
+                            </div> --}}
 
                                 <div class="m-2 mb-4 col-12 text-end">
                                     <button type="submit" class="btn rounded-pill btn-success"
-                                        id="update-appointment">Update</button>
+                                        id="save-event-service">Save</button>
                                 </div>
-
-
                             </div>
                         </form>
                     </div>

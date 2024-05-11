@@ -31,15 +31,27 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        // Validation rules
+        $rules = [
             'name' => 'required|string|max:255',
-            // "description" => "required",
-            // "address" => "required",
-            // "city" => "required",
-            // "country" => "Sri Lanka",
-            // "start_datetime" => "2021-06-18T12:30",
-            // "end_datetime" => "2021-06-18T12:30"
-        ]);
+            'description' => 'required|string',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'start_datetime' => 'required|date',
+            'end_datetime' => 'required|date|after:start_datetime',
+        ];
+
+        // Custom validation messages
+        $messages = [
+            'end_datetime.after' => 'End datetime must be after start datetime.',
+        ];
+
+        // Validate the request
+        $request->validate($rules, $messages);
+
+        $user_id  = auth()->user()->id;
+        $event_publisher_id = auth()->user()->eventPublisher->id;
 
         Event::create([
             "name" => $request->name,
@@ -49,12 +61,12 @@ class EventController extends Controller
             "country" => $request->country,
             "start_datetime" => $request->start_datetime,
             "end_datetime" => $request->end_datetime,
-            "user_id" => 1,
-            "event_publisher_id" => 1
+            "user_id" => $user_id,
+            "event_publisher_id" => $event_publisher_id
         ]);
 
         // Redirect back with a success message
-        return redirect()->back()->with('success', 'Event created successfully');
+        return redirect()->route('publisher.events.index')->with('success', 'Event created successfully');
     }
 
     /**
@@ -70,7 +82,7 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        $event = [];
+        $event = Event::findOrFail($id);
         return view('publisher.events.edit', compact('event'));
     }
 
@@ -79,7 +91,30 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validation rules
+        $rules = [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'country' => 'required|string|max:255',
+            'start_datetime' => 'required|date',
+            'end_datetime' => 'required|date|after:start_datetime',
+        ];
+
+        // Custom validation messages
+        $messages = [
+            'end_datetime.after' => 'End datetime must be after start datetime.',
+        ];
+
+        // Validate the request
+        $validatedData = $request->validate($rules, $messages);
+
+        // Update the event
+        Event::where('id', $id)->update($validatedData);
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Event updated successfully');
     }
 
     /**
@@ -87,6 +122,13 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Find the event by ID or throw a 404 error if not found
+        $event = Event::findOrFail($id);
+
+        // Delete the event
+        $event->delete();
+
+        // Optionally, you can redirect back with a success message
+        return redirect()->back()->with('success', 'Event deleted successfully');
     }
 }

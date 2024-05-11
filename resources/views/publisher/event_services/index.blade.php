@@ -6,47 +6,68 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Events </h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard / Events </span> / Event Services </h4>
 
             <!-- Basic Bootstrap Table -->
             <div class="card">
                 <h5 class="card-header row">
                     <div class="col-6">
-                        Events
+                        {{ $event->name }} - Event Services
                     </div>
                     <div class="col-6 text-end">
-                        <a href="{{ route('publisher.events.create') }}" class="btn btn-primary justify-content-end">Create
-                            Event</a>
+                        <a href="{{ route('publisher.event.services.create', $event->id) }}"
+                            class="btn btn-primary justify-content-end">Create
+                            Event Service</a>
+                        <a href="{{ route('publisher.events.index') }}" class="btn btn-dark active">
+                            Back
+                        </a>
                     </div>
                 </h5>
                 <div class="table-responsive text-nowrap">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Description</th>
+                                <th>Service</th>
+                                <th>Note</th>
+                                <th>Budget From</th>
+                                <th>Budget To</th>
+                                <th>Qty</th>
                                 <th>Status</th>
-                                <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @if (!empty($events) && $events->count() && isset($events))
-                                @foreach ($events as $event)
+                            @if (!empty($event_services) && $event_services->count() && isset($event_services))
+                                @foreach ($event_services as $event_service)
                                     <tr>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>
-                                                {{ $event->name }}
+                                        <td>
+                                            <strong>
+                                                {{ $event_service->event->name }}
                                             </strong>
                                         </td>
 
                                         <td>
-                                            {{ $event->description }}
+                                            {{ $event_service->note }}
                                         </td>
 
                                         <td>
-                                            @if ($event->status == 'pending')
+                                            {{ $event_service->budget_range_start }}
+                                        </td>
+
+                                        <td>
+                                            {{ $event_service->budget_range_end }}
+                                        </td>
+
+                                        <td>
+                                            {{ $event_service->quantity }}
+                                        </td>
+
+
+
+                                        <td>
+                                            @if ($event_service->status == 'pending')
                                                 <span class="badge bg-label-warning me-1">Pending</span>
-                                            @elseif ($event->status == 'published')
+                                            @elseif ($event_service->status == 'published')
                                                 <span class="badge bg-label-success me-1">Published</span>
                                             @else
                                                 <span class="badge bg-label-danger me-1">Inactive</span>
@@ -54,24 +75,18 @@
                                         </td>
 
                                         <td>
-                                            <a href="{{ route('publisher.event.services.index', $event->id) }}"
-                                                class="btn btn-primary">
-                                                Event Services
-                                            </a>
-                                        </td>
-
-                                        <td>
                                             <a class="btn btn-icon btn-primary" title="Edit"
-                                                href="{{ route('publisher.events.edit', $event->id) }}"><i
+                                                href="{{ route('publisher.event.services.edit', $event->id) }}"><i
                                                     class="bx bx-edit-alt me-1"></i> </a>
 
                                             <form class="d-inline"
-                                                action="{{ route('publisher.events.destroy', $event->id) }}" method="POST">
+                                                action="{{ route('publisher.event.services.destroy', $event->id) }}"
+                                                method="POST">
                                                 @csrf
                                                 @method('DELETE')
 
                                                 <button type="submit" class="btn btn-icon btn-danger" title="Delete"
-                                                    onclick="return confirm('Are you sure you want to delete this event?')">
+                                                    onclick="return confirm('Are you sure you want to delete this event service?')">
                                                     <i class="bx bx-trash-alt"></i>
                                                 </button>
                                             </form>
@@ -80,7 +95,7 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="4" class="text-center">Events not found...!</td>
+                                    <td colspan="7" class="text-center">Event service not found...!</td>
                                 </tr>
                             @endif
                         </tbody>
