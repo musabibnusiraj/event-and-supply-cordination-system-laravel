@@ -26,6 +26,10 @@
 
                         <form id="formAuthentication" class="mb-3" action="{{ route('register') }}" method="POST">
                             @csrf
+
+                            <input type="hidden" value="{{ request()->input('type') == 'S' ? 'supplier' : 'publisher' }}"
+                                name="role">
+
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input id="name" type="text"

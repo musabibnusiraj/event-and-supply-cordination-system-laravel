@@ -86,18 +86,33 @@
                                         value="{{ $event->country ?? old('country') }}">
                                 </div>
 
-                                <div class="mb-3 col-6">
+                                <div class="mb-3 col-4">
                                     <label for="start_datetime" class="col-form-label">Start
                                         Datetime</label>
                                     <input class="form-control" name="start_datetime" type="datetime-local"
                                         value="{{ $event->start_datetime ?? old('start_datetime') }}" id="start_datetime">
                                 </div>
 
-                                <div class="mb-3 col-6">
+                                <div class="mb-3 col-4">
                                     <label for="end_datetime" class="col-form-label">End
                                         Datetime</label>
                                     <input name="end_datetime" class="form-control" type="datetime-local"
                                         value="{{ $event->end_datetime ?? old('end_datetime') }}" id="end_datetime">
+                                </div>
+
+                                <div class="mb-3 col-4">
+                                    <label for="status" class="col-form-label"> Status </label>
+                                    <select name="status" id="status"
+                                        class="form-control @error('status') is-invalid @enderror">
+                                        <option value="pending" {{ $event->status == 'pending' ? 'selected' : '' }}>Pending
+                                        </option>
+                                        <option value="inactive" {{ $event->status == 'inactive' ? 'selected' : '' }}>
+                                            Inactive
+                                        </option>
+                                        <option value="published" {{ $event->status == 'published' ? 'selected' : '' }}>
+                                            Published
+                                        </option>
+                                    </select>
                                 </div>
 
                                 <div class="m-2 mb-4 col-12 text-end">

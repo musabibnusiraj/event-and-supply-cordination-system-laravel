@@ -65,9 +65,9 @@
             <div class="layout-container">
 
                 @if ($roleName == 'Supplier')
-                    @include('layouts.supplier-side-menu');
+                    @include('layouts.supplier-side-menu')
                 @elseif($roleName == 'Publisher')
-                    @include('layouts.publisher-side-menu');
+                    @include('layouts.publisher-side-menu')
                 @endif
 
                 <!-- Layout container -->
@@ -83,16 +83,6 @@
                         </div>
 
                         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                            <!-- Search -->
-                            <div class="navbar-nav align-items-center">
-                                <div class="nav-item d-flex align-items-center">
-                                    <i class="bx bx-search fs-4 lh-0"></i>
-                                    <input type="text" class="form-control border-0 shadow-none"
-                                        placeholder="Search..." aria-label="Search..." />
-                                </div>
-                            </div>
-                            <!-- /Search -->
-
                             <ul class="navbar-nav flex-row align-items-center ms-auto">
 
                                 <!-- User -->
@@ -100,7 +90,7 @@
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
                                         data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="../assets/img/avatars/1.png" alt
+                                            <img src="{{ asset('../assets/img/avatars/1.png') }}" alt
                                                 class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </a>
@@ -110,14 +100,14 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            <img src="../assets/img/avatars/1.png" alt
+                                                            <img src="{{ asset('../assets/img/avatars/1.png') }}" alt
                                                                 class="w-px-40 h-auto rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
                                                         <span
                                                             class="fw-semibold d-block">{{ Auth::user()->name ?? '' }}</span>
-                                                        <small class="text-muted">Admin</small>
+                                                        <small class="text-muted">{{ $roleName ?? '' }}</small>
                                                     </div>
                                                 </div>
                                             </a>
@@ -126,10 +116,18 @@
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="bx bx-user me-2"></i>
-                                                <span class="align-middle">My Profile</span>
-                                            </a>
+                                            @if ($roleName == 'Supplier')
+                                                <a class="dropdown-item" href="{{ route('supplier.info.show') }}">
+                                                    <i class="bx bx-user me-2"></i>
+                                                    <span class="align-middle">My Profile</span>
+                                                </a>
+                                            @elseif($roleName == 'Publisher')
+                                                <a class="dropdown-item" href="{{ route('publisher.info.show') }}">
+                                                    <i class="bx bx-user me-2"></i>
+                                                    <span class="align-middle">My Profile</span>
+                                                </a>
+                                            @endif
+
                                         </li>
                                         <li>
                                             <div class="dropdown-divider"></div>

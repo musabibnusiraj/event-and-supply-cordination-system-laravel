@@ -73,7 +73,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function authenticated(Request $request, $user)
+    public function registered(Request $request, $user)
     {
 
         $role = Role::findByName('Publisher');

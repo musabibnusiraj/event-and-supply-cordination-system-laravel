@@ -56,7 +56,7 @@
                                 <input type="hidden" name="event_id" value="{{ $event_service->event->id }}" required>
 
                                 <div class="col-12 mb-3">
-                                    <label for="service_id" class="form-label">Event Service Type</label>
+                                    <label for="service_id" class="form-label">Status</label>
                                     <select id="service_id" class="form-control @error('service_id') is-invalid @enderror"
                                         name="service_id">
 
@@ -67,7 +67,6 @@
                                                 {{ $service->description }}
                                             </option>
                                         @endforeach
-
                                     </select>
                                 </div>
 
@@ -93,17 +92,6 @@
                                     <label for="quantity" class="form-label">Quantity</label>
                                     <input name="quantity" type="text" class="form-control"
                                         value="{{ $event_service->quantity ?? 1 }}" required>
-                                </div>
-
-                                <div class="mb-3 col-6">
-                                    <label for="status" class="col-form-label"> Status </label>
-                                    <select id="status" class="form-control @error('status') is-invalid @enderror"
-                                        name="status">
-                                        <option value="inactive"
-                                            {{ $event_service->status == 'inactive' ? 'selected' : '' }}> Inactive </option>
-                                        <option value="publish" {{ $event_service->status == 'publish' ? 'selected' : '' }}>
-                                            Publish </option>
-                                    </select>
                                 </div>
 
                                 <div class="m-2 mb-4 col-12 text-end">

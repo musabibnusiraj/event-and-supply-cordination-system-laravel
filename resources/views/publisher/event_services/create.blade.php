@@ -88,6 +88,17 @@
                                     <input name="quantity" type="text" class="form-control" value="1" required>
                                 </div>
 
+                                <div class="mb-3 col-6">
+                                    <label for="status" class="col-form-label"> Status </label>
+                                    <select id="status" class="form-control @error('status') is-invalid @enderror"
+                                        name="status">
+                                        <option value="inactive">Inactive
+                                        </option>
+                                        <option value="publish">Publish
+                                        </option>
+                                    </select>
+                                </div>
+
                                 {{-- <div class="mb-3 col-6">
                                     <label for="document" class="form-label">Document</label>
                                     <input name="document" type="file" class="form-control" value="">

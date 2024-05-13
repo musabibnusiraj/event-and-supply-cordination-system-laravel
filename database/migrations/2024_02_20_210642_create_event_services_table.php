@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('quantity')->default(1);
             $table->text('note')->nullable();
             $table->text('document')->nullable();
+            $table->enum('status', ['publish', 'inactive'])->default('inactive');
             $table->timestamps();
         });
     }

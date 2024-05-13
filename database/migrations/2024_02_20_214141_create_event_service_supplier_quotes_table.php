@@ -16,10 +16,13 @@ return new class extends Migration
             $table->foreignId('event_service_id')->constrained()->onDelete('cascade');
             $table->foreignId('supplier_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('event_id')->constrained()->onDelete('cascade');
             $table->string('document')->nullable();
             $table->decimal('budget_range_start', 10, 2)->nullable();
             $table->decimal('budget_range_end', 10, 2)->nullable();
             $table->unsignedInteger('quantity')->nullable();
+            $table->text('note')->nullable();
+            $table->boolean('awarded')->default(false);
             $table->timestamps();
         });
     }

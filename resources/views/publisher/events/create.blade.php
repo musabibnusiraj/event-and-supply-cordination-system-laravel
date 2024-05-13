@@ -93,21 +93,35 @@
                                         value="2021-06-18T12:30:00" id="end_datetime">
                                 </div>
 
-                                <div class="m-2 mb-4 col-12 text-end">
-                                    <button type="submit" class="btn rounded-pill btn-success"
-                                        id="update-appointment">Save</button>
+                                <div class="mb-3 col-4">
+                                    <label for="status" class="col-form-label"> Status </label>
+                                    <select id="status" class="form-control @error('status') is-invalid @enderror"
+                                        name="status">
+                                        <option value="pending">Pending
+                                        </option>
+                                        <option value="inactive">Inactive
+                                        </option>
+                                        <option value="published">Published
+                                        </option>
+                                    </select>
                                 </div>
-
-
                             </div>
-                        </form>
+
+                            <div class="m-2 mb-4 col-12 text-end">
+                                <button type="submit" class="btn rounded-pill btn-success"
+                                    id="update-appointment">Save</button>
+                            </div>
+
+
                     </div>
+                    </form>
                 </div>
             </div>
-            <!--/ Basic Bootstrap Table -->
-
         </div>
-        <!-- / Content -->
+        <!--/ Basic Bootstrap Table -->
+
+    </div>
+    <!-- / Content -->
     </div>
     <!-- Content wrapper -->
 @endsection

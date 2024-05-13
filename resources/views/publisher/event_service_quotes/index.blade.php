@@ -6,18 +6,16 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard / Events </span> / Event Services </h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard / Events </span> / Event Services Quotes
+            </h4>
 
             <!-- Basic Bootstrap Table -->
             <div class="card">
                 <h5 class="card-header row">
                     <div class="col-6">
-                        {{ $event->name ?? '' }} - Event Services
+                        Event Service Quotes
                     </div>
                     <div class="col-6 text-end">
-                        <a href="{{ route('publisher.event.services.create', $event->id) }}"
-                            class="btn btn-primary justify-content-end">Create
-                            Event Service</a>
                         <a href="{{ route('publisher.events.index') }}" class="btn btn-dark active">
                             Back
                         </a>
@@ -27,13 +25,12 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Event Service</th>
+                                <th>Supplier</th>
                                 <th>Event Service Type</th>
                                 <th>Note</th>
                                 <th>Budget From</th>
                                 <th>Budget To</th>
                                 <th>Qty</th>
-                                <th></th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
@@ -69,15 +66,10 @@
                                         </td>
 
                                         <td>
-                                            <a href="{{ route('publisher.event.service.quotes.index', $event_service->id) }}"
-                                                class="btn btn-success text-white">
-                                                Quotes
-                                            </a>
-                                        </td>
-
-                                        <td>
-                                            @if ($event_service->status == 'publish')
-                                                <span class="badge bg-label-success me-1">Publish</span>
+                                            @if ($event_service->status == 'pending')
+                                                <span class="badge bg-label-warning me-1">Pending</span>
+                                            @elseif ($event_service->status == 'published')
+                                                <span class="badge bg-label-success me-1">Published</span>
                                             @else
                                                 <span class="badge bg-label-danger me-1">Inactive</span>
                                             @endif

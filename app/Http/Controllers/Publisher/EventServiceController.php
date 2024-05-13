@@ -93,9 +93,32 @@ class EventServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        //
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'event_id' => 'required|exists:events,id',
+            'service_id' => 'required|exists:services,id',
+            'budget_range_start' => 'required|numeric',
+            'budget_range_end' => 'required|numeric|gte:budget_range_start',
+            'quantity' => 'required|integer',
+            'note' => 'nullable|string|max:256',
+            // 'document' => 'nullable|file|max:2048', // Assuming max file size is 2MB
+        ], [
+            'budget_range_end.gte' => 'The end budget must be equal to or greater than the start budget.',
+        ]);
+
+        // Find the EventService instance by ID
+        $eventService = EventService::findOrFail($id);
+
+        // Update the properties of the EventService instance
+        $eventService->fill($validatedData);
+
+        // Save the changes to the database
+        $eventService->save();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'Event service updated successfully');
     }
 
     /**
@@ -103,6 +126,13 @@ class EventServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Find the event by ID or throw a 404 error if not found
+        $eventService = EventService::findOrFail($id);
+
+        // Delete the event
+        $eventService->delete();
+
+        // Optionally, you can redirect back with a success message
+        return redirect()->back()->with('success', 'Event service deleted successfully');
     }
 }

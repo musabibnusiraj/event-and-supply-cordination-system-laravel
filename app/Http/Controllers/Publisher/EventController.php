@@ -48,22 +48,17 @@ class EventController extends Controller
         ];
 
         // Validate the request
-        $request->validate($rules, $messages);
+        $validatedData = $request->validate($rules, $messages);
 
         $user_id  = auth()->user()->id;
         $event_publisher_id = auth()->user()->eventPublisher->id;
 
-        Event::create([
-            "name" => $request->name,
-            "description" => $request->description,
-            "address" => $request->address,
-            "city" => $request->city,
-            "country" => $request->country,
-            "start_datetime" => $request->start_datetime,
-            "end_datetime" => $request->end_datetime,
-            "user_id" => $user_id,
-            "event_publisher_id" => $event_publisher_id
-        ]);
+        $validatedData['user_id'] = $user_id;
+        $validatedData['event_publisher_id'] = $event_publisher_id;
+
+        $event = new Event();
+        $event->fill($validatedData);
+        $event->save();
 
         // Redirect back with a success message
         return redirect()->route('publisher.events.index')->with('success', 'Event created successfully');
@@ -100,6 +95,7 @@ class EventController extends Controller
             'country' => 'required|string|max:255',
             'start_datetime' => 'required|date',
             'end_datetime' => 'required|date|after:start_datetime',
+            'status' => 'nullable',
         ];
 
         // Custom validation messages
