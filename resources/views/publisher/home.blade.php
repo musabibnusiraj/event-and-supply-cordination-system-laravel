@@ -28,6 +28,26 @@
                 </div>
             </div>
 
+            <h5 class="pb-1 mb-4">Suppliers & Cordinators </h5>
+            <div class="row mb-5">
+                @foreach ($suppliers as $supplier)
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card text-center mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $supplier->name ?? '' }}</h5>
+                                <p class="card-text">
+                                    {{ $supplier->organization ?? '' }}
+                                </p>
+                                <p class="card-text">
+                                    {{ $supplier->about ?? '' }}
+                                </p>
+                                <a href="{{ route('publisher.supplier.info.show', $supplier->id) }}"
+                                    class="btn btn-primary">View</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
         <!-- / Content -->
 

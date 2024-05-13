@@ -55,6 +55,12 @@
                                     <input type="text" name="organization" class="form-control"
                                         value="{{ $supplier->organization ?? '' }}" required>
                                 </div>
+                                <div class="mb-3 col-12">
+                                    <label for="about" class="form-label">About</label>
+                                    <textarea type="text" name="about" class="form-control" required>
+                                        {{ $supplier->about ?? '' }}
+                                    </textarea>
+                                </div>
                                 <div class="mb-3 col-4">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" name="email" class="form-control"
@@ -87,6 +93,16 @@
                                                 {{ $country->name->common }}
                                             </option>
                                         @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-4">
+                                    <label for="status" class="col-form-label"> Status </label>
+                                    <select id="status" class="form-control @error('status') is-invalid @enderror"
+                                        name="status">
+                                        <option value="private">Private
+                                        </option>
+                                        <option value="public">Public
+                                        </option>
                                     </select>
                                 </div>
 

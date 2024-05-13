@@ -21,9 +21,10 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('city');
             $table->string('country');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->enum('status', ['private', 'public', 'inactive'])->default('private');
             $table->timestamps();
 
-            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }

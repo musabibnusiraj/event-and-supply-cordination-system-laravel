@@ -47,6 +47,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('event-service-quotes/{id}/cancel', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'cancel'])->name('publisher.event.service.quotes.cancel');
                 Route::post('event-service-quotes/{id}/completed', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'completed'])->name('publisher.event.service.quotes.completed');
                 Route::get('event-service-quotes/{supplierId}/supplier', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'supplier'])->name('publisher.event.service.quote.supplier.info');
+
+                Route::get('supplier/{id}/show', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'supplier'])->name('publisher.supplier.info.show');
             });
 
             Route::post('info/save', [App\Http\Controllers\Publisher\PublisherController::class, 'save'])->name('publisher.info.save');

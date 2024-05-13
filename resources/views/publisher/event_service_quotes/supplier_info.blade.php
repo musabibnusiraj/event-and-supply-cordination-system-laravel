@@ -28,11 +28,18 @@
                                 <input type="text" name="name" class="form-control"
                                     value="{{ $supplier->name ?? '' }}" readonly>
                             </div>
+
                             <div class="mb-3 col-6">
                                 <label for="organization" class="form-label">Organization</label>
                                 <input type="text" name="organization" class="form-control"
                                     value="{{ $supplier->organization ?? '' }}" readonly>
                             </div>
+
+                            <div class="mb-3 col-12">
+                                <label for="about" class="form-label">About</label>
+                                <textarea type="text" name="about" class="form-control" readonly>{{ $supplier->about ?? '' }}</textarea>
+                            </div>
+
                             <div class="mb-3 col-4">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control"
@@ -44,11 +51,13 @@
                                 <input type="text" name="address" class="form-control"
                                     value="{{ $supplier->address ?? '' }}" readonly>
                             </div>
+
                             <div class="mb-3 col-4">
                                 <label for="city" class="form-label">City</label>
                                 <input type="text" name="city" class="form-control"
                                     value="{{ $supplier->city ?? '' }}" readonly>
                             </div>
+
                             <div class="mb-3 col-4">
                                 <label for="phone" class="form-label">Phone</label>
                                 <input type="text" name="phone" class="form-control"

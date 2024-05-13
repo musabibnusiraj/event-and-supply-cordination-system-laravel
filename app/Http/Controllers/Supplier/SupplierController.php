@@ -20,7 +20,9 @@ class SupplierController extends Controller
             'address' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
-            'user_id' => 'required'
+            'user_id' => 'required',
+            'about' => 'required',
+            'status' => 'required'
         ];
 
         // Validate the request

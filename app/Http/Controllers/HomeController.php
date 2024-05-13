@@ -40,7 +40,8 @@ class HomeController extends Controller
                     return view('publisher.profile', $data);
 
 
-                return view('publisher.home');
+                $suppliers = Supplier::where('status', 'public')->get();
+                return view('publisher.home', compact('suppliers'));
             } elseif ($role->name == 'Supplier') {
                 $supplier = Supplier::where('user_id', $authuser->id)->first();
                 if ($supplier == null)
