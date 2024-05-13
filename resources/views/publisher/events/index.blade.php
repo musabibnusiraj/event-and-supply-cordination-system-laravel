@@ -20,6 +20,13 @@
                     </div>
                 </h5>
                 <div class="table-responsive text-nowrap">
+                    <!-- Check if there is a success message, if so, display it -->
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <table class="table">
                         <thead>
                             <tr>

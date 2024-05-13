@@ -96,6 +96,8 @@
                                         </option>
                                         <option value="publish">Publish
                                         </option>
+                                        <option value="completed">Completed
+                                        </option>
                                     </select>
                                 </div>
 

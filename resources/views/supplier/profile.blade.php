@@ -11,7 +11,7 @@
             <div class="card">
                 <h5 class="card-header row">
                     <div class="col-6">
-                        Publisher Info
+                        Supplier Info
                     </div>
                 </h5>
 

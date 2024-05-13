@@ -24,6 +24,14 @@
                     </div>
                 </h5>
                 <div class="table-responsive text-nowrap">
+
+                    <!-- Check if there is a success message, if so, display it -->
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <table class="table">
                         <thead>
                             <tr>
@@ -45,6 +53,12 @@
                                         <td>
                                             <strong>
                                                 {{ $event_service->event->name ?? '' }}
+
+                                                @if ($event_service->awarded() > 0)
+                                                    <span class="badge bg-success"> Awarded </span>
+                                                @elseif ($event_service->awarded() == 0 && $event_service->status != 'completed' && $event_service->status != 'inactive')
+                                                    <span class="badge bg-success"> Open </span>
+                                                @endif
                                             </strong>
                                         </td>
 
@@ -66,27 +80,34 @@
 
                                         <td>
                                             {{ $event_service->quantity ?? '' }}
+
                                         </td>
 
                                         <td>
+
+
                                             <a href="{{ route('publisher.event.service.quotes.index', $event_service->id) }}"
-                                                class="btn btn-success text-white">
+                                                class="btn btn-warning text-white">
                                                 Quotes
                                             </a>
+
                                         </td>
 
                                         <td>
                                             @if ($event_service->status == 'publish')
                                                 <span class="badge bg-label-success me-1">Publish</span>
+                                            @elseif($event_service->status == 'completed')
+                                                <span class="badge bg-label-warning me-1">Completed</span>
                                             @else
                                                 <span class="badge bg-label-danger me-1">Inactive</span>
                                             @endif
+
                                         </td>
 
                                         <td>
                                             <a class="btn btn-icon btn-primary" title="Edit"
-                                                href="{{ route('publisher.event.services.edit', $event_service->id) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> </a>
+                                                href="{{ route('publisher.event.services.edit', $event_service->id) }}">
+                                                <i class="bx bx-edit-alt me-1"></i> </a>
 
                                             <form class="d-inline"
                                                 action="{{ route('publisher.event.services.destroy', $event_service->id) }}"

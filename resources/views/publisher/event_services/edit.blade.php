@@ -100,9 +100,14 @@
                                     <select id="status" class="form-control @error('status') is-invalid @enderror"
                                         name="status">
                                         <option value="inactive"
-                                            {{ $event_service->status == 'inactive' ? 'selected' : '' }}> Inactive </option>
-                                        <option value="publish" {{ $event_service->status == 'publish' ? 'selected' : '' }}>
+                                            {{ $event_service->status == 'inactive' ? 'selected' : '' }}> Inactive
+                                        </option>
+                                        <option value="publish"
+                                            {{ $event_service->status == 'publish' ? 'selected' : '' }}>
                                             Publish </option>
+                                        <option value="completed"
+                                            {{ $event_service->status == 'completed' ? 'selected' : '' }}>
+                                            Completed </option>
                                     </select>
                                 </div>
 

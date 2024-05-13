@@ -16,7 +16,13 @@ class EventService extends Model
         'quantity',
         'note',
         'document',
+        'status'
     ];
+
+    public function awarded()
+    {
+        return EventServiceSupplierQuote::where('event_service_id', $this->id)->where('awarded', 1)->count();
+    }
 
     public function event()
     {

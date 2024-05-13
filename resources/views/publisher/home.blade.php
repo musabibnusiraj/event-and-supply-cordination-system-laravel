@@ -11,7 +11,7 @@
                             <div class="col-sm-7">
                                 <div class="card-body">
                                     <h5 class="card-title text-primary">Welcome {{ Auth::user()->name ?? '' }}! 🎉</h5>
-                                    <h6>{{ Auth::user()->roles->first()->name ?? '' }}</h6>
+                                    <h6>Event {{ Auth::user()->roles->first()->name ?? '' }}</h6>
                                     <p class="mb-4"></p>
                                 </div>
                             </div>

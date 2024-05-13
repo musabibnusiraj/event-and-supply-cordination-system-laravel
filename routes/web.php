@@ -43,6 +43,10 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('event-services/{id}', [App\Http\Controllers\Publisher\EventServiceController::class, 'destroy'])->name('publisher.event.services.destroy');
 
                 Route::get('event-service-quotes/{eventServiceId}/index', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'index'])->name('publisher.event.service.quotes.index');
+                Route::post('event-service-quotes/{id}/award', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'award'])->name('publisher.event.service.quotes.award');
+                Route::post('event-service-quotes/{id}/cancel', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'cancel'])->name('publisher.event.service.quotes.cancel');
+                Route::post('event-service-quotes/{id}/completed', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'completed'])->name('publisher.event.service.quotes.completed');
+                Route::get('event-service-quotes/{supplierId}/supplier', [App\Http\Controllers\Publisher\EventServiceQuoteController::class, 'supplier'])->name('publisher.event.service.quote.supplier.info');
             });
 
             Route::post('info/save', [App\Http\Controllers\Publisher\PublisherController::class, 'save'])->name('publisher.info.save');

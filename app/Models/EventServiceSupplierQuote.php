@@ -16,8 +16,16 @@ class EventServiceSupplierQuote extends Model
         'budget_range_end',
         'quantity',
         'event_service_id',
-        'supplier_id'
+        'supplier_id',
+        'awarded'
     ];
+
+    public function awarded()
+    {
+        return EventServiceSupplierQuote::where('event_service_id', $this->event_service_id)
+            ->where('awarded', 1)
+            ->count();
+    }
 
     public function eventService()
     {
