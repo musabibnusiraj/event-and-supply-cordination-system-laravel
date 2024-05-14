@@ -53,8 +53,18 @@
                             <div class="row">
                                 <input type="hidden" name="event_id" value="{{ $event_id }}" required>
 
+                                <div class="mb-3 col-12">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" name="title" class="form-control" value="" required>
+                                </div>
+
+                                <div class="mb-3 col-12">
+                                    <label for="note" class="form-label">Note</label>
+                                    <input type="text" name="note" class="form-control" value="" required>
+                                </div>
+
                                 <div class="col-12 mb-3">
-                                    <label for="service_id" class="form-label">Status</label>
+                                    <label for="service_id" class="form-label">Event Service Type</label>
                                     <select id="service_id" class="form-control @error('service_id') is-invalid @enderror"
                                         name="service_id">
                                         @foreach ($services as $service)
@@ -66,10 +76,6 @@
                                     </select>
                                 </div>
 
-                                <div class="mb-3 col-12">
-                                    <label for="note" class="form-label">Note</label>
-                                    <input type="text" name="note" class="form-control" value="" required>
-                                </div>
 
                                 <div class="mb-3 col-6">
                                     <label for="budget_range_start" class="form-label">Budget From</label>

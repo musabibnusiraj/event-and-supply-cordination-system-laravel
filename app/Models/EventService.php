@@ -16,7 +16,8 @@ class EventService extends Model
         'quantity',
         'note',
         'document',
-        'status'
+        'status',
+        'title'
     ];
 
     public function awarded()

@@ -30,7 +30,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Title</th>
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th></th>

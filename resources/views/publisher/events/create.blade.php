@@ -54,14 +54,14 @@
                                     <div id="alert-container"></div>
                                 </div>
 
-                                <div class="mb-3 col-4">
-                                    <label for="name" class="form-label">Name</label>
+                                <div class="mb-3 col-12">
+                                    <label for="name" class="form-label">Title</label>
                                     <input type="text" name="name" class="form-control" value="">
                                 </div>
 
-                                <div class="mb-3 col-8">
+                                <div class="mb-3 col-12">
                                     <label for="description" class="form-label">Description</label>
-                                    <input name="description" type="text" class="form-control" value="">
+                                    <textarea name="description" type="text" class="form-control"></textarea>
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -79,21 +79,27 @@
                                     <input name="country" type="text" class="form-control" value="">
                                 </div>
 
-                                <div class="mb-3 col-6">
+                                <div class="mb-3 col-4">
                                     <label for="start_datetime" class="col-form-label">Start
                                         Datetime</label>
                                     <input class="form-control" name="start_datetime" type="datetime-local"
                                         value="2021-06-18T12:30:00" id="start_datetime">
                                 </div>
 
-                                <div class="mb-3 col-6">
+                                <div class="mb-3 col-4">
                                     <label for="end_datetime" class="col-form-label">End
                                         Datetime</label>
                                     <input name="end_datetime" class="form-control" type="datetime-local"
                                         value="2021-06-18T12:30:00" id="end_datetime">
                                 </div>
-
                                 <div class="mb-3 col-4">
+                                    <label for="expired_at" class="col-form-label">Expired
+                                        Datetime</label>
+                                    <input name="expired_at" class="form-control" type="datetime-local"
+                                        value="2021-06-18T12:30:00" id="expired_at">
+                                </div>
+
+                                {{-- <div class="mb-3 col-4">
                                     <label for="status" class="col-form-label"> Status </label>
                                     <select id="status" class="form-control @error('status') is-invalid @enderror"
                                         name="status">
@@ -104,7 +110,7 @@
                                         <option value="published">Published
                                         </option>
                                     </select>
-                                </div>
+                                </div> --}}
                             </div>
 
                             <div class="m-2 mb-4 col-12 text-end">

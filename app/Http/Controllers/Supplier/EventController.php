@@ -13,7 +13,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $data['events'] = Event::all();
+        $data['events'] = Event::where('status', 'published')->whereHas('eventServices')->orderBy('id', 'desc')->get();
 
         return view('supplier.events.index', $data);
     }

@@ -35,7 +35,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Event Service</th>
+                                <th>Event Service Title</th>
                                 <th>Event Service Type</th>
                                 <th>Note</th>
                                 <th>Budget From</th>
@@ -52,7 +52,7 @@
                                     <tr>
                                         <td>
                                             <strong>
-                                                {{ $event_service->event->name ?? '' }}
+                                                {{ $event_service->title ?? '' }}
 
                                                 @if ($event_service->awarded() > 0)
                                                     <span class="badge bg-success"> Awarded </span>

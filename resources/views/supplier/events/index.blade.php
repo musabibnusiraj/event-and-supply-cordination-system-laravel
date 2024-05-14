@@ -8,69 +8,42 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> Events </h4>
 
-            <!-- Basic Bootstrap Table -->
-            <div class="card">
-                <h5 class="card-header">Events</h5>
-                <div class="table-responsive text-nowrap">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-border-bottom-0">
-                            @if (isset($events))
-                                @foreach ($events as $event)
-                                    <tr>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>
-                                                {{ $event->name }}
-                                            </strong>
-                                        </td>
+            @if (isset($events))
+                @foreach ($events as $event)
+                    <div class="col-12  mb-3">
+                        <div class="card">
+                            <h5 class="card-header">{{ $event->name }}</h5>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>
+                                        {{ $event->description }}
+                                    </p>
+                                </blockquote>
+                            </div>
 
-                                        <td>
-                                            {{ $event->description }}
-                                        </td>
-
-                                        <td>
-                                            @if ($event->status == 1)
-                                                <span class="badge bg-label-primary me-1">Active</span>
-                                            @else
-                                                <span class="badge bg-label-danger me-1">Inactive</span>
-                                            @endif
-                                        </td>
-
-                                        <td>
-                                            <button type="button" class="btn btn-primary">
-                                                Event Services
-                                            </button>
-                                        </td>
-
-                                        <td>
-                                            <div class="dropdown">
-                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                    data-bs-toggle="dropdown">
-                                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                                            class="bx bx-trash me-1"></i> Delete</a>
+                            @if ($event->eventServices->count() > 0)
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        @foreach ($event->eventServices as $eventService)
+                                            <a href="javascript:void(0);"
+                                                class="list-group-item list-group-item-action flex-column align-items-start">
+                                                <div class="d-flex justify-content-between w-100">
+                                                    <h6>{{ $eventService->title }}</h6>
+                                                    <small>3 days ago</small>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                                <p class="mb-1">
+                                                    {{ $eventService->note }}
+                                                </p>
+                                                <small>Donec id elit non mi porta.</small>
+                                            </a>
+                                        @endforeach
+                                    </div>
+                                </div>
                             @endif
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!--/ Basic Bootstrap Table -->
+                        </div>
+                    </div>
+                @endforeach
+            @endif
 
         </div>
         <!-- / Content -->

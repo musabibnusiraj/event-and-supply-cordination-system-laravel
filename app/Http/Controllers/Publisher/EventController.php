@@ -13,7 +13,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $data['events'] = Event::all();
+        $user_id = auth()->user()->id;
+        $data['events'] = Event::where('user_id', $user_id)->get();
 
         return view('publisher.events.index', $data);
     }
@@ -39,7 +40,8 @@ class EventController extends Controller
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'start_datetime' => 'required|date',
-            'end_datetime' => 'required|date|after:start_datetime',
+            'end_datetime' => 'required|date|gte:start_datetime',
+            'expired_at' => 'required|date'
         ];
 
         // Custom validation messages
@@ -94,8 +96,9 @@ class EventController extends Controller
             'city' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'start_datetime' => 'required|date',
-            'end_datetime' => 'required|date|after:start_datetime',
+            'end_datetime' => 'required|date|gte:start_datetime',
             'status' => 'nullable',
+            'expired_at' => 'required|date'
         ];
 
         // Custom validation messages

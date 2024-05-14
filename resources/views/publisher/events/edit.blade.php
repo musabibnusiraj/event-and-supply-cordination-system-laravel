@@ -56,16 +56,15 @@
                                     <div id="alert-container"></div>
                                 </div>
 
-                                <div class="mb-3 col-4">
-                                    <label for="name" class="form-label">Name</label>
+                                <div class="mb-3 col-12">
+                                    <label for="name" class="form-label">Title</label>
                                     <input type="text" name="name" class="form-control"
                                         value="{{ $event->name ?? old('name') }}">
                                 </div>
 
-                                <div class="mb-3 col-8">
+                                <div class="mb-3 col-12">
                                     <label for="description" class="form-label">Description</label>
-                                    <input name="description" type="text" class="form-control"
-                                        value="{{ $event->description ?? old('description') }}">
+                                    <textarea name="description" type="text" class="form-control">{{ $event->description ?? old('description') }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-12">
@@ -99,6 +98,12 @@
                                     <input name="end_datetime" class="form-control" type="datetime-local"
                                         value="{{ $event->end_datetime ?? old('end_datetime') }}" id="end_datetime">
                                 </div>
+                                <div class="mb-3 col-4">
+                                    <label for="expired_at" class="col-form-label">Expired
+                                        Datetime</label>
+                                    <input name="expired_at" class="form-control" type="datetime-local"
+                                        value="{{ $event->expired_at ?? old('expired_at') }}" id="expired_at">
+                                </div>
 
                                 <div class="mb-3 col-4">
                                     <label for="status" class="col-form-label"> Status </label>
@@ -109,9 +114,13 @@
                                         <option value="inactive" {{ $event->status == 'inactive' ? 'selected' : '' }}>
                                             Inactive
                                         </option>
-                                        <option value="published" {{ $event->status == 'published' ? 'selected' : '' }}>
-                                            Published
-                                        </option>
+
+                                        @if ($event->eventServices->count() > 0)
+                                            <option value="published"
+                                                {{ $event->status == 'published' ? 'selected' : '' }}>
+                                                Published
+                                            </option>
+                                        @endif
                                     </select>
                                 </div>
 

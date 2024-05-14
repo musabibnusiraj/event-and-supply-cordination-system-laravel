@@ -57,9 +57,7 @@
                                 </div>
                                 <div class="mb-3 col-12">
                                     <label for="about" class="form-label">About</label>
-                                    <textarea type="text" name="about" class="form-control" required>
-                                        {{ $supplier->about ?? '' }}
-                                    </textarea>
+                                    <textarea type="text" name="about" class="form-control" required>{{ $supplier->about ?? '' }}</textarea>
                                 </div>
                                 <div class="mb-3 col-4">
                                     <label for="email" class="form-label">Email</label>

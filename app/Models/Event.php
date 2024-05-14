@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'start_datetime', 'end_datetime', 'address', 'country', 'city', 'description', 'user_id', 'event_publisher_id', 'status'];
+    protected $fillable = ['name', 'start_datetime', 'end_datetime', 'address', 'country', 'city', 'description', 'user_id', 'event_publisher_id', 'status', 'expired_at', 'title'];
 
     // Define the relationship with the User model
     public function user()
@@ -22,7 +22,7 @@ class Event extends Model
         return $this->belongsTo(EventPublisher::class);
     }
 
-    public function services()
+    public function eventServices()
     {
         return $this->hasMany(EventService::class);
     }

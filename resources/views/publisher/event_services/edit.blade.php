@@ -55,6 +55,18 @@
                             <div class="row">
                                 <input type="hidden" name="event_id" value="{{ $event_service->event->id }}" required>
 
+                                <div class="mb-3 col-12">
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" name="title" class="form-control"
+                                        value="{{ $event_service->title ?? '' }}" required>
+                                </div>
+
+                                <div class="mb-3 col-12">
+                                    <label for="note" class="form-label">Note</label>
+                                    <input type="text" name="note" class="form-control"
+                                        value="{{ $event_service->note ?? '' }}" required>
+                                </div>
+
                                 <div class="col-12 mb-3">
                                     <label for="service_id" class="form-label">Event Service Type</label>
                                     <select id="service_id" class="form-control @error('service_id') is-invalid @enderror"
@@ -69,12 +81,6 @@
                                         @endforeach
 
                                     </select>
-                                </div>
-
-                                <div class="mb-3 col-12">
-                                    <label for="note" class="form-label">Note</label>
-                                    <input type="text" name="note" class="form-control"
-                                        value="{{ $event_service->note ?? '' }}" required>
                                 </div>
 
                                 <div class="mb-3 col-6">

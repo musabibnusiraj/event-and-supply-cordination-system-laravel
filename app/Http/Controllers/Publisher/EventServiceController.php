@@ -45,6 +45,7 @@ class EventServiceController extends Controller
             'budget_range_end' => 'required|numeric|gte:budget_range_start',
             'quantity' => 'required|integer',
             'note' => 'nullable|string|max:256',
+            'title' => 'required'
             // 'document' => 'nullable|file|max:2048', // Assuming max file size is 2MB
         ], [
             'budget_range_end.gte' => 'The end budget must be equal to or greater than the start budget.',
@@ -95,7 +96,8 @@ class EventServiceController extends Controller
             'budget_range_end' => 'required|numeric|gte:budget_range_start',
             'quantity' => 'required|integer',
             'note' => 'nullable|string|max:256',
-            'status' => 'nullable'
+            'status' => 'nullable',
+            'title' => 'required'
             // 'document' => 'nullable|file|max:2048', // Assuming max file size is 2MB
         ], [
             'budget_range_end.gte' => 'The end budget must be equal to or greater than the start budget.',
