@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use App\Models\EventPublisher;
+use App\Models\EventService;
+use App\Models\EventServiceSupplierQuote;
 use Illuminate\Http\Request;
+use PragmaRX\Countries\Package\Countries;
 
 class EventController extends Controller
 {
@@ -35,14 +39,6 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
@@ -64,5 +60,16 @@ class EventController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function publisherInfo($id)
+    {
+        $event_publisher = EventPublisher::find($id);
+
+        $countries = Countries::all();
+        $data['countries'] = $countries;
+        $data['event_publisher'] = $event_publisher;
+
+        return view('supplier.events.publisher_info', $data);
     }
 }

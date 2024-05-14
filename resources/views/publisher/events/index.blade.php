@@ -41,13 +41,18 @@
                             @if (!empty($events) && $events->count() && isset($events))
                                 @foreach ($events as $event)
                                     <tr>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>
-                                                {{ $event->name }}
-                                            </strong>
+                                        <td>
+                                            <div style="width: 200px; text-wrap: wrap;"><i
+                                                    class="fab fa-angular fa-lg text-danger"></i> <strong>
+                                                    {{ $event->name }}
+                                                </strong>
+                                            </div>
                                         </td>
 
                                         <td>
-                                            {{ $event->description }}
+                                            <div style="width: 320px; text-wrap: wrap;">
+                                                {{ $event->description }}
+                                            </div>
                                         </td>
 
                                         <td>

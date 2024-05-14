@@ -60,6 +60,14 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['middleware' => ['role:Supplier']], function () {
             Route::group(['middleware' => ['check.profile.info']], function () {
                 Route::get('events/index', [App\Http\Controllers\Supplier\EventController::class, 'index'])->name('supplier.events.index');
+                Route::get('publisher/{id}/show', [App\Http\Controllers\Supplier\EventController::class, 'publisherInfo'])->name('supplier.publisher.info.show');
+
+                Route::get('event-service-quotes/{eventServiceId}/create', [App\Http\Controllers\Supplier\EventServiceQuoteController::class, 'create'])->name('supplier.event.service.quotes.create');
+                Route::get('event-service-quotes/{id}/edit', [App\Http\Controllers\Supplier\EventServiceQuoteController::class, 'edit'])->name('supplier.event.service.quotes.edit');
+                Route::post('event-service-quotes/store', [App\Http\Controllers\Supplier\EventServiceQuoteController::class, 'store'])->name('supplier.event.service.quotes.store');
+                Route::patch('event-service-quotes/{id}/update', [App\Http\Controllers\Supplier\EventServiceQuoteController::class, 'update'])->name('supplier.event.service.quotes.update');
+                Route::get('event-service-quotes/{eventServiceId}/index', [App\Http\Controllers\Supplier\EventServiceQuoteController::class, 'index'])->name('supplier.event.service.quotes.index');
+                Route::get('info/{id}/show', [App\Http\Controllers\Supplier\EventServiceQuoteController::class, 'supplier'])->name('quote.supplier.info.show');
             });
 
             Route::post('info/save', [App\Http\Controllers\Supplier\SupplierController::class, 'save'])->name('supplier.info.save');

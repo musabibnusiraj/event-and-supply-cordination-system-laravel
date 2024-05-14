@@ -17,7 +17,9 @@ class EventServiceSupplierQuote extends Model
         'quantity',
         'event_service_id',
         'supplier_id',
-        'awarded'
+        'awarded',
+        'event_id',
+        'note'
     ];
 
     public function awarded()

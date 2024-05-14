@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+    
     protected $fillable = ['name', 'start_datetime', 'end_datetime', 'address', 'country', 'city', 'description', 'user_id', 'event_publisher_id', 'status', 'expired_at', 'title'];
 
     // Define the relationship with the User model

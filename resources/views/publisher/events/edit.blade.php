@@ -118,7 +118,7 @@
                                         @if ($event->eventServices->count() > 0)
                                             <option value="published"
                                                 {{ $event->status == 'published' ? 'selected' : '' }}>
-                                                Published
+                                                Publish
                                             </option>
                                         @endif
                                     </select>
