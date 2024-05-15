@@ -61,13 +61,14 @@
                                                 @endif
                                             </strong>
                                         </td>
-
                                         <td>
-                                            {{ $event_service->service->name ?? '' }}
+                                            <div style="width: 320px; text-wrap: wrap;">
+                                                {{ $event_service->note ?? '' }}
+                                            </div>
                                         </td>
 
                                         <td>
-                                            {{ $event_service->note ?? '' }}
+                                            {{ $event_service->service->name ?? '' }}
                                         </td>
 
                                         <td>
