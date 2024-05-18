@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SimpleMail;
 use App\Models\EventService;
 use App\Models\EventServiceSupplierQuote;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use PragmaRX\Countries\Package\Countries;
 
 class EventServiceQuoteController extends Controller
@@ -29,6 +31,15 @@ class EventServiceQuoteController extends Controller
         $quote = new EventServiceSupplierQuote();
         $quote->fill($validatedData);
         $quote->save();
+
+        $title = $quote->eventService->title;
+        $id = $quote->eventService->id;
+
+        $quote->eventService->title;
+        $messageContent = 'Event Service Id:' . $id . '<br>Event Service Title: ' . $title . ' <br><br>  Event service quote has been created! ';
+
+        $publisherEmail = $quote->eventService->event->eventPublisher->email;
+        Mail::to($publisherEmail)->send(new SimpleMail($messageContent));
 
         // Redirect back with a success message
         return redirect()->route('supplier.event.service.quotes.index', $request->event_service_id)->with('success', 'Quote created successfully');

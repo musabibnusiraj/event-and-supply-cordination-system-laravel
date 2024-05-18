@@ -36,7 +36,7 @@ class EventServiceQuoteController extends Controller
             $id = $eventServiceQuote->eventService->id;
 
             $eventServiceQuote->eventService->title;
-            $messageContent = 'Event Id:' . $id . '<br>Event Title: ' . $title . ' event has been awarded to you successfully! <br> ';
+            $messageContent = 'Event Service Id:' . $id . '<br>Event Service Title: ' . $title . '<br><br>  Event service has been awarded to you successfully! <br> ';
 
             $supplierEmail = $eventServiceQuote->supplier->email;
             Mail::to($supplierEmail)->send(new SimpleMail($messageContent));
@@ -63,7 +63,7 @@ class EventServiceQuoteController extends Controller
             $id = $eventServiceQuote->eventService->id;
 
             $eventServiceQuote->eventService->title;
-            $messageContent = 'Event Id:' . $id . '<br>Event Title: ' . $title . ' event has been canceled :( ';
+            $messageContent = 'Event Service Id:' . $id . '<br>Event Service Title: ' . $title . '<br><br> Event service has been canceled :( ';
 
             $supplierEmail = $eventServiceQuote->supplier->email;
             Mail::to($supplierEmail)->send(new SimpleMail($messageContent));
@@ -91,7 +91,7 @@ class EventServiceQuoteController extends Controller
             $id = $eventServiceQuote->eventService->id;
 
             $eventServiceQuote->eventService->title;
-            $messageContent = 'Event Id:' . $id . '<br>Event Title: ' . $title . ' event has been completed successfully! See you again. Thank You. :) ';
+            $messageContent = 'Event Service Id:' . $id . '<br>Event Service Title: ' . $title . '<br><br> Event service has been completed successfully! See you again. Thank You. :) ';
 
             $supplierEmail = $eventServiceQuote->supplier->email;
             Mail::to($supplierEmail)->send(new SimpleMail($messageContent));
