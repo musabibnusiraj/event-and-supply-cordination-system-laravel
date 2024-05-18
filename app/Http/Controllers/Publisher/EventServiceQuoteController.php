@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Publisher;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SimpleMail;
 use App\Models\EventService;
 use App\Models\EventServiceSupplierQuote;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use PragmaRX\Countries\Package\Countries;
 
 class EventServiceQuoteController extends Controller
@@ -30,6 +32,15 @@ class EventServiceQuoteController extends Controller
             // Update the awarded field to 1
             $eventServiceQuote->update(['awarded' => 1]);
 
+            $title = $eventServiceQuote->eventService->title;
+            $id = $eventServiceQuote->eventService->id;
+
+            $eventServiceQuote->eventService->title;
+            $messageContent = 'Event Id:' . $id . '<br>Event Title: ' . $title . ' event has been awarded to you successfully! <br> ';
+
+            $supplierEmail = $eventServiceQuote->supplier->email;
+            Mail::to($supplierEmail)->send(new SimpleMail($messageContent));
+
             // Redirect back with a success message
             return redirect()->back()->with('success', 'Quote has been awarded successfully.');
         } else {
@@ -47,6 +58,15 @@ class EventServiceQuoteController extends Controller
         if ($eventServiceQuote) {
             // Update the awarded field to 1
             $eventServiceQuote->update(['awarded' => 2]);
+
+            $title = $eventServiceQuote->eventService->title;
+            $id = $eventServiceQuote->eventService->id;
+
+            $eventServiceQuote->eventService->title;
+            $messageContent = 'Event Id:' . $id . '<br>Event Title: ' . $title . ' event has been canceled :( ';
+
+            $supplierEmail = $eventServiceQuote->supplier->email;
+            Mail::to($supplierEmail)->send(new SimpleMail($messageContent));
 
             // Redirect back with a success message
             return redirect()->back()->with('success', 'Quote has been canceled successfully.');
@@ -66,6 +86,15 @@ class EventServiceQuoteController extends Controller
             // Update the awarded field to 1
             $eventServiceQuote->update(['awarded' => 3]);
             $eventServiceQuote->eventService->update(['status' => 'completed']);
+
+            $title = $eventServiceQuote->eventService->title;
+            $id = $eventServiceQuote->eventService->id;
+
+            $eventServiceQuote->eventService->title;
+            $messageContent = 'Event Id:' . $id . '<br>Event Title: ' . $title . ' event has been completed successfully! See you again. Thank You. :) ';
+
+            $supplierEmail = $eventServiceQuote->supplier->email;
+            Mail::to($supplierEmail)->send(new SimpleMail($messageContent));
 
             // Redirect back with a success message
             return redirect()->back()->with('success', 'Quote has been completed successfully.');
