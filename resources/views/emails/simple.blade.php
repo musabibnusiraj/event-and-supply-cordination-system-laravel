@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <p>{{ $messageContent }}</p>
+    <p>{!! $messageContent !!}</p>
 </body>
 
 </html>
