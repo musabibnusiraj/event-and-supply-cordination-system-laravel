@@ -35,6 +35,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#ID</th>
                                 <th>Event Service Title</th>
                                 <th>Event Service Type</th>
                                 <th>Note</th>
@@ -50,6 +51,7 @@
                             @if (!empty($event_services) && $event_services->count() && isset($event_services))
                                 @foreach ($event_services as $event_service)
                                     <tr>
+                                        <td>{{ $event_service->id ?? '' }}</td>
                                         <td>
                                             <strong>
                                                 {{ $event_service->title ?? '' }}

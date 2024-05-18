@@ -29,7 +29,7 @@ class SimpleMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Simple Mail',
+            subject: 'Event Cordy Verification...!',
         );
     }
 

@@ -41,6 +41,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#ID</th>
                                 <th>Supplier</th>
                                 <th>Proposal Note</th>
                                 <th>Budget From</th>
@@ -53,6 +54,7 @@
                             @if (!empty($event_service_quotes) && $event_service_quotes->count() && isset($event_service_quotes))
                                 @foreach ($event_service_quotes as $event_service_quote)
                                     <tr>
+                                        <td>{{ $event_service_quote->id ?? '' }}</td>
                                         <td>
                                             <strong>
                                                 <a href="{{ route('publisher.event.service.quote.supplier.info', $event_service_quote->supplier->id) }}"

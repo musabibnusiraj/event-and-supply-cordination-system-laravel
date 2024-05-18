@@ -78,6 +78,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#ID</th>
                                 <th>Supplier</th>
                                 <th>Proposal Note</th>
                                 <th>Budget From</th>
@@ -90,6 +91,8 @@
                             @if (!empty($event_service_quotes) && $event_service_quotes->count() && isset($event_service_quotes))
                                 @foreach ($event_service_quotes as $event_service_quote)
                                     <tr class="@if (auth()->user()->id == $event_service_quote->user_id) bg-label-success @endif">
+
+                                        <td>{{ $event_service_quote->id ?? '' }}</td>
                                         <td>
                                             <strong>
                                                 <a href="{{ route('quote.supplier.info.show', $event_service_quote->supplier->id) }}"

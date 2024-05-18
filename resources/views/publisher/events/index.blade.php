@@ -30,6 +30,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>#ID</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Status</th>
@@ -41,6 +42,7 @@
                             @if (!empty($events) && $events->count() && isset($events))
                                 @foreach ($events as $event)
                                     <tr>
+                                        <td>{{ $event->id ?? '' }}</td>
                                         <td>
                                             <div style="width: 200px; text-wrap: wrap;"><i
                                                     class="fab fa-angular fa-lg text-danger"></i> <strong>
