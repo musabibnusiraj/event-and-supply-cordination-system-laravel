@@ -36,7 +36,9 @@ class EventServiceQuoteController extends Controller
         $id = $quote->eventService->id;
 
         $quote->eventService->title;
-        $messageContent = 'Event Service Id:' . $id . '<br>Event Service Title: ' . $title . ' <br><br>  Event service quote has been created! ';
+        $supplier = $quote->supplier;
+
+        $messageContent = 'Event Service Id:' . $id . '<br>Event Service Title: ' . $title . ' <br><br>  Event service quote has been created! <br><br> Supplier ID: ' . $supplier->id . ' <br> Supplier Name: ' . $supplier->name;
 
         $publisherEmail = $quote->eventService->event->eventPublisher->email;
         Mail::to($publisherEmail)->send(new SimpleMail($messageContent));

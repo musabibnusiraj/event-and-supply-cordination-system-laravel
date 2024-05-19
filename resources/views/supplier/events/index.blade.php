@@ -45,7 +45,7 @@
 
                                     <a href="{{ route('supplier.publisher.info.show', $event->eventPublisher->id) }}">
                                         <div class="btn btn-outline-primary">
-                                            <strong class="text-muted">About Client</strong>
+                                            <i class="text-muted">About Event Organizer</i>
                                             <p class="card-text">
                                                 <strong> {{ $event->eventPublisher->name }}</strong>
                                                 <br>
@@ -62,13 +62,15 @@
                                     <div class="list-group">
                                         @foreach ($event->eventServices as $eventService)
                                             @if ($eventService->status != 'inactive')
-                                                <a href="{{ route('supplier.event.service.quotes.index', $eventService->id) }}"
+                                                <a @if ($expired == false) href=" {{ route('supplier.event.service.quotes.index', $eventService->id) }}" @endif
                                                     class="list-group-item list-group-item-action flex-column align-items-start">
                                                     <div class="d-flex justify-content-between w-100">
                                                         <h6>{{ $eventService->title }}</h6>
                                                         <small>
                                                             {{ $eventService->created_at->diffForHumans() }}
-                                                            @if ($eventService->awarded() > 0)
+                                                            @if ($expired == true)
+                                                                <span class="badge bg-danger"> Expired </span>
+                                                            @elseif ($eventService->awarded() > 0)
                                                                 <span class="badge bg-warning"> Awarded </span>
                                                             @elseif ($eventService->awarded() == 0 && $eventService->status != 'completed' && $eventService->status != 'inactive')
                                                                 <span class="badge bg-success"> Open </span>
